@@ -6,6 +6,9 @@ gem 'rails', '4.0.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# Use Desk API to link into Desk
+gem 'desk_api', '~> 0.5.7'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

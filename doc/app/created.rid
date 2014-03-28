@@ -1,0 +1,6 @@
+Fri, 28 Mar 2014 12:59:32 -0700
+README.rdoc	Fri, 28 Mar 2014 10:38:16 -0700
+app/controllers/application_controller.rb	Fri, 28 Mar 2014 10:38:16 -0700
+app/controllers/welcome_controller.rb	Fri, 28 Mar 2014 10:41:42 -0700
+app/helpers/application_helper.rb	Fri, 28 Mar 2014 10:38:16 -0700
+app/helpers/welcome_helper.rb	Fri, 28 Mar 2014 10:41:42 -0700
