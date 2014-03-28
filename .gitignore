@@ -20,3 +20,6 @@
 
 # Ignore any .keep files
 *.keep
+
+# Ignore local environment setup
+.env
