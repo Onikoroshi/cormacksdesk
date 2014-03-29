@@ -1,0 +1,9 @@
+<h2>All of the Labels on your Site</h2>
+
+<%= link_to "Create a new Label", controller: "labels", action: "new" %>
+
+<ul>
+  <% @labels.each do |a_label| %>
+    <li><%= a_label.name %> - <%= a_label.enabled ? "Enabled" : "Disabled" %></li>
+  <% end %>
+</ul>

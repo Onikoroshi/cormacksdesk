@@ -5,6 +5,11 @@ Cormacksdesk::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  get 'cases' => 'cases#index'
+  get 'labels' => 'labels#index'
+  get 'labels/new' => 'labels#new'
+  post 'labels/new' => 'labels#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

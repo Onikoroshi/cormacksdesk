@@ -1,0 +1,33 @@
+<% if @errors %>
+  <h4><%= @errors %></h4>
+<% end %>
+
+<%= form_for :label do |f| %>
+  <p>
+    <h5>Label Name:</h5>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <h5>Description:</h5>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <h5>Types</h5>
+    <%= check_box_tag "label[types][]", "case", false %>case
+    <%= check_box_tag "label[types][]", "macro", false %>macro
+    <%= check_box_tag "label[types][]", "article", false %>article
+  </p>
+  <p>
+    <h5>Enabled?</h5>
+    <%= radio_button_tag 'label[enabled]', true, true %>Yes
+    <%= radio_button_tag 'label[enabled]', false %>No
+  </p>
+  <p>
+    <h5>Choose a Color:</h5>
+    <%= select "label", "color", label_colors %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
