@@ -5,8 +5,10 @@ class WelcomeController < ApplicationController
       token_secret: 'UXH0fuSpi1idCqISrP4QVE6nvuwC4sCdGOPnDwWD',
       consumer_key: 'wYGw0UEkmbHFLtFgCWmU',
       consumer_secret: 'egJdds0TvXssfWKHe9MUVNIFvxIgo16rPLXoJECL',
-      subdomain: 'devel'
+      subdomain: 'pcconsulting'
       })
+
+    # client = DeskApi::Client.new username: 'petertcormack@gmail.com', password: 'N0t0uchy', subdomain: 'pcconsulting'
 
     @cases = client.cases
     @toshow = ["show", "something", "on", "the", "page"]
