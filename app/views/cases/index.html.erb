@@ -11,15 +11,17 @@
 
   <table style="width:75%;">
     <tr>
+      <th></th>
       <th>Subject</th>
       <th>Labels</th>
       <th></th>
     </tr>
-    <% @cases.entries.each do |a_case| %>
+    <% @cases.entries.each_with_index do |a_case, index| %>
       <tr>
+        <td><%= a_case.id %></td>
         <td style="width:30%; vertical_align:center; padding:15px;"><strong><%= a_case.subject %></strong></td>
         <td style="width:30%; text-align:center; vertical-align:center; padding:15px"><%= a_case.labels.entries.join(", ") %></td>
-        <td style="width:30%; text-align:right; vertical-align:center; padding:15px;"><%= link_to "Add Labels", controller: "cases", action: "edit", id: a_case.id, cases: @cases %></td>
+        <td style="width:30%; text-align:right; vertical-align:center; padding:15px;"><%= link_to "Add Labels", controller: "cases", action: "edit", id: index %></td>
       </tr>
     <% end %>
   </table>
