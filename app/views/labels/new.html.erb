@@ -1,8 +1,8 @@
-<% if @errors %>
-  <h4><%= @errors %></h4>
-<% end %>
+<%= render partial: "errors" %>
 
-<%= form_for :label do |f| %>
+<%= link_to "Back to Labels", labels_path %>
+
+<%= form_for @label do |f| %>
   <p>
     <h5>Label Name:</h5>
     <%= f.text_field :name %>

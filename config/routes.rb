@@ -6,9 +6,12 @@ Cormacksdesk::Application.routes.draw do
   root 'welcome#index'
 
   get 'cases' => 'cases#index'
+  patch 'cases' => 'cases#update'
+  get 'cases/edit' => 'cases#edit'
+
   get 'labels' => 'labels#index'
+  post 'labels' => 'labels#create'
   get 'labels/new' => 'labels#new'
-  post 'labels/new' => 'labels#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

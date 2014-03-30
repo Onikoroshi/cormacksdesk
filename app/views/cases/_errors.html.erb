@@ -1,0 +1,10 @@
+<% if @case_model.errors.full_messages.any? %>
+  <div style="color:red">
+    <h3>This Case could not be updated because of the following errors:</h3>
+    <ul>
+      <% @case_model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

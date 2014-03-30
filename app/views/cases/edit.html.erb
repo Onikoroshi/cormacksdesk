@@ -1,0 +1,27 @@
+<%= render partial: 'errors' %>
+
+<h4>Choose the labels you want to have on the "<%= @case.subject %>" case:</h4>
+
+<% if @case.labels.entries.any? %>
+  <h5>Labels already associated with this case:</h5>
+  <ul>
+    <% @case.labels.entries.each do |a_label| %>
+      <li><%= a_label %></li>
+    <% end %>
+  </ul>
+<%end %>
+
+<h5>Labels available to add:</h5>
+<%= form_for @case_model, method: :patch do |f| %>
+  <p>
+  <% @labels.reject{ |a_label| @case.labels.entries.include?(a_label.name) }.each do |a_label| %>
+    <%= check_box_tag "case[labels][]", a_label.name, @case.labels.entries.include?(a_label.name) %> <%= a_label.name %>
+    <br>
+  <% end %>
+  </p>
+
+  <%= f.submit "Add Labels" %>
+<% end %>
+
+<br>
+<%= link_to "Back to Cases", cases_path %>

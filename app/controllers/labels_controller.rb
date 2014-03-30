@@ -4,27 +4,23 @@ class LabelsController < ApplicationController
   end
 
   def new
-    @errors ||= nil
+    @label = Label.new()
   end
 
   def create
-    begin
-      new_label = view_context.desk.labels.create({
-        name: params[:label][:name],
-        description: params[:label][:description],
-        types: params[:label][:types],
-        enabled: params[:label][:enabled],
-        color: params[:label][:color]
-      })
-    rescue DeskApi::Error => e
-      @errors = e.message
-      e.errors.each do |an_error|
-        @errors += "<br>" + an_error[0] + " : " + an_error[1].to_s
-      end
-      redirect_to action: 'new'
-      return
-    end
+    @label = Label.new(params[:label])
+    # ({
+    #   name: params[:label][:name],
+    #   description: params[:label][:description],
+    #   types: params[:label][:types],
+    #   enabled: params[:label][:enabled],
+    #   color: params[:label][:color]
+    # })
 
-    redirect_to action: 'index'
+    if @label.save
+      redirect_to action: 'index'
+    else
+      render action: 'new'
+    end
   end
 end

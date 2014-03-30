@@ -1,9 +1,22 @@
 <h2>All of the Labels on your Site</h2>
 
-<%= link_to "Create a new Label", controller: "labels", action: "new" %>
+<p>
+  <%= link_to "Create a new Label", controller: "labels", action: "new" %>
+  <br>
+  <%= link_to "Back Home", root_path %>
+</p>
 
-<ul>
+<table style="width:75%">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Types</th>
+    <th></th>
   <% @labels.each do |a_label| %>
-    <li><%= a_label.name %> - <%= a_label.enabled ? "Enabled" : "Disabled" %></li>
+    <tr style=<%= color_style_text(a_label.color) %> >
+      <td><%= a_label.name %></td>
+      <td><%= a_label.description %></td>
+      <td><%= a_label.types.entries.join(", ") %></td>
+      <td><%= a_label.enabled ? "Enabled" : "Disabled" %></td>
   <% end %>
-</ul>
+</table>

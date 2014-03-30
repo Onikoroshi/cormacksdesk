@@ -1,0 +1,10 @@
+<% if @label.errors.full_messages.any? %>
+  <div style="color:red">
+    <h3>This Label could not be saved because of the following errors:</h3>
+    <ul>
+      <% @label.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

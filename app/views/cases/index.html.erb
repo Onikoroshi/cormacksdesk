@@ -1,11 +1,26 @@
-<h2>All your Cases with the "<%= @filter == "error with filter" ? @filter : @filter.name %>" filter</h2>
-
-<% if @cases == "error with cases" %>
-  An error getting the cases
+<% if @errors %>
+  <div style="color:red">
+    <h3>@errors</h3>
+  </div>
 <% else %>
-  <ul>
+  <h2>All your Cases with the "<%= @filter.name %>" filter</h2>
+
+  <p>
+    <%= link_to "Back Home", root_path %>
+  </p>
+
+  <table style="width:75%;">
+    <tr>
+      <th>Subject</th>
+      <th>Labels</th>
+      <th></th>
+    </tr>
     <% @cases.entries.each do |a_case| %>
-      <li><%= a_case.subject %></li>
+      <tr>
+        <td style="width:30%; vertical_align:center; padding:15px;"><strong><%= a_case.subject %></strong></td>
+        <td style="width:30%; text-align:center; vertical-align:center; padding:15px"><%= a_case.labels.entries.join(", ") %></td>
+        <td style="width:30%; text-align:right; vertical-align:center; padding:15px;"><%= link_to "Add Labels", controller: "cases", action: "edit", id: a_case.id, cases: @cases %></td>
+      </tr>
     <% end %>
-  </ul>
+  </table>
 <% end %>
