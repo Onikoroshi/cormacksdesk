@@ -5,7 +5,7 @@ class CasesController < ApplicationController
       @cases = get_cases
     rescue DeskApi::Error => e
       @errors= {e.to_s => e.backtrace.inspect}
-      raise e
+      # raise e
     end
   end
 
