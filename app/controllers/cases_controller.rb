@@ -3,8 +3,9 @@ class CasesController < ApplicationController
     begin
       @filter = get_filter
       @cases = get_cases
-    rescue DesApi::Error => e
-      @errors = e.to_s
+    rescue DeskApi::Error => e
+      @errors= {e.to_s => e.backtrace.inspect}
+      raise e
     end
   end
 
