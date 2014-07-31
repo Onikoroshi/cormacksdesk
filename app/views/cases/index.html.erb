@@ -20,8 +20,8 @@
       <tr>
         <td><%= a_case.id %></td>
         <td style="width:30%; vertical_align:center; padding:15px;"><strong><%= a_case.subject %></strong></td>
-        <td style="width:30%; text-align:center; vertical-align:center; padding:15px"><%= a_case.labels.entries.join(", ") %></td>
-        <td style="width:30%; text-align:right; vertical-align:center; padding:15px;"><%= link_to "Add Labels", controller: "cases", action: "edit", id: index %></td>
+        <td style="width:30%; text-align:center; vertical-align:center; padding:15px"><%= a_case.labels.entries.map{|label| label.name}.join(", ") %></td>
+        <td style="width:30%; text-align:right; vertical-align:center; padding:15px;"><%= link_to "Add Labels", controller: "cases", action: "edit", id: a_case.id %></td>
       </tr>
     <% end %>
   </table>

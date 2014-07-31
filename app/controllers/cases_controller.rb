@@ -11,6 +11,9 @@ class CasesController < ApplicationController
 
   def edit
     @case = get_a_case(params[:id])
+    if @case.locked_until.present?
+      puts "this case is locked!"
+    end
     @case_model = Case.new({
       the_case: @case,
       labels: []
@@ -19,7 +22,7 @@ class CasesController < ApplicationController
   end
 
   def update
-    @case = get_a_case(params[:id])
+    @case = get_a_case(params[:case][:id])
     @case_model = Case.new({
       the_case: @case,
       labels: params[:case] ? params[:case][:labels] : []
@@ -34,19 +37,23 @@ class CasesController < ApplicationController
   end
 
   private
+  def get_desk
+    ApplicationController.helpers.desk
+  end
+
   def get_filter
-    ApplicationController.helpers.desk.filters.entries.first
+    get_desk.filters.entries.first
   end
 
   def get_cases
     get_filter.cases
   end
 
-  def get_a_case id = 3
-    ApplicationController.helpers.desk.filters.entries.first.cases.entries[1]
+  def get_a_case id
+    get_desk.cases.find(id)
   end
 
   def get_labels
-    ApplicationController.helpers.desk.labels.entries
+    get_desk.labels.entries
   end
 end
