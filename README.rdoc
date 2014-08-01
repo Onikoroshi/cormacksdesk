@@ -2,12 +2,10 @@
 
 This app is designed to hook into the Desk.com API and allow a user to do some very specific tasks:
 
-* Present a list of cases available in the first case filter
-
-* Present a list of labels
-
-* Create a label called "prove it"
-
-* Assign that label to the first case in the case filter
+* List the available case filters and allow a user to click on one.
+* Get a list of cases available in the selected case filter and present them with their labels.
+* Get a list of labels in the site and present them.
+* Create a label and add it to the list of labels.
+* Assign a label to a case.
 
 The app uses the <tt>unicorn</tt> as a webserver, and <tt>postgresql</tt> to work better with Heroku.
