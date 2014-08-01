@@ -1,10 +1,6 @@
-<h2>All of the Labels on your Site</h2>
+<h2>All of the Labels!</h2>
 
-<p>
-  <%= link_to "Create a new Label", controller: "labels", action: "new" %>
-  <br>
-  <%= link_to "Back Home", root_path %>
-</p>
+<h3><%= link_to "Create a new Label", controller: "labels", action: "new" %></h3>
 
 <table style="width:75%">
   <tr>
@@ -18,5 +14,8 @@
       <td><%= a_label.description %></td>
       <td><%= a_label.types.entries.join(", ") %></td>
       <td><%= a_label.enabled ? "Enabled" : "Disabled" %></td>
+    </tr>
   <% end %>
 </table>
+
+<h3><%= link_to "Back Home", root_path %></h3>

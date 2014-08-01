@@ -3,26 +3,26 @@
     <h3><%= @errors %></h3>
   </div>
 <% else %>
-  <h2>All your Cases with the "<%= @filter.name %>" filter</h2>
+  <h2>All Cases with the "<%= @filter.name %>" filter</h2>
 
-  <p>
-    <%= link_to "Back Home", root_path %>
-  </p>
-
-  <table style="width:75%;">
-    <tr>
-      <th></th>
-      <th>Subject</th>
-      <th>Labels</th>
-      <th></th>
-    </tr>
-    <% @cases.entries.each_with_index do |a_case, index| %>
+  <% if @cases.entries.any? %>
+    <table>
       <tr>
-        <td><%= a_case.id %></td>
-        <td style="width:30%; vertical_align:center; padding:15px;"><strong><%= a_case.subject %></strong></td>
-        <td style="width:30%; text-align:center; vertical-align:center; padding:15px"><%= a_case.labels.entries.map{|label| label.name}.join(", ") %></td>
-        <td style="width:30%; text-align:right; vertical-align:center; padding:15px;"><%= link_to "Add Labels", controller: "cases", action: "edit", id: a_case.id %></td>
+        <th>Subject</th>
+        <th>Labels</th>
+        <th></th>
       </tr>
-    <% end %>
-  </table>
+      <% @cases.entries.each do |a_case| %>
+        <tr>
+          <td style="text-align:right; vertical_align:center; padding:15px;"><strong><%= a_case.subject %></strong></td>
+          <td style="text-align:center; vertical-align:center; padding:15px"><%= a_case.labels.entries.map{|label| label.name}.join(", ") %></td>
+          <td style="text-align:left; vertical-align:center; padding:15px;"><%= link_to "Manage Labels", controller: "cases", action: "edit", id: a_case.id, filter_id: params[:filter_id] %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h3>Sorry, but there are no cases with this filter.
+  <% end %>
 <% end %>
+
+<h3><%= link_to "Back Home", root_path %></h3>

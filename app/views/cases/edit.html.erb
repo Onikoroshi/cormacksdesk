@@ -1,29 +1,15 @@
 <%= render partial: 'errors' %>
 
-<h4>Choose the labels you want to have on the "<%= @case.subject %>" case (ID: <%= @case.id %>):</h4>
+<h3>Choose the labels you want to have on the "<%= @case.subject %>" case (ID: <%= @case.id %>):</h3>
 
-<% if @case.labels.entries.any? %>
-  <h5>Labels already associated with this case:</h5>
-  <ul>
-    <% @case.labels.entries.each do |a_label| %>
-      <li><%= a_label.name %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<h5>Labels available to add:</h5>
 <%= simple_form_for @case_model, method: :patch do |f| %>
+  <%= hidden_field_tag :filter_id, params[:filter_id].to_s %>
   <p>
     <%= f.input :id, as: :hidden, input_html: { value: @case.id } %>
-    <%= f.input :labels, as: :check_boxes, collection: @labels.reject{ |a_label| @case.labels.entries.map{|l| l.name}.include?(a_label.name) }, value_method: :name %>
-  <!-- <% @labels.reject{ |a_label| @case.labels.entries.map{|l| l.name}.include?(a_label.name) }.each do |a_label| %>
-    <%= check_box_tag "case[labels][]", a_label.name %> <%= a_label.name %>
-    <br>
-  <% end %> -->
+    <%= f.input :labels, label: "", as: :check_boxes, collection: @labels, selected: @case.labels.entries, value_method: :name %>
   </p>
-
-  <%= f.submit "Add Labels" %>
+  <br>
+  <%= f.submit "Update Labels" %>
 <% end %>
 
-<br>
-<%= link_to "Back to Cases", cases_path %>
+<h3><%= link_to "Back to Cases", cases_path(filter_id: params[:filter_id]) %></h3>

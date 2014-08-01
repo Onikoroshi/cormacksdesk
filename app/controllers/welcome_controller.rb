@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @cases = view_context.desk.cases
-    @labels = view_context.desk.labels
+    @filters = view_context.desk.filters.entries
   end
 end

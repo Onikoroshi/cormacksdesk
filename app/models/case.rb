@@ -12,7 +12,7 @@ class Case
 
   def save
     begin
-      the_case.update labels: labels
+      the_case.update(labels: labels, label_action: :replace)
       true
     rescue DeskApi::Error::UnprocessableEntity => e
       e.errors.each do |an_error|
