@@ -3,16 +3,18 @@
 
 <table>
   <tr>
+    <th>position</th>
     <th>Filter Name</th>
     <th>Cases</th>
     <th></th>
   </tr>
   <% @filters.entries.each do |filter| %>
     <tr>
+      <td><strong><%= filter.position %></strong></td>
       <td style="text-align:left; vertical_align:center; padding:15px;"><strong><%= link_to(filter.name, cases_path(filter_id: filter.position)) %></strong></td>
       <td style="text-align:left; vertical_align:center; padding:15px;"<strong><%= count_filter_cases(filter) %></strong></td>
     </tr>
   <% end %>
 </table>
 
-<h3><%= link_to "View your labels", labels_path %></h3>
+<h3><%= link_to "View all Labels", labels_path %></h3>

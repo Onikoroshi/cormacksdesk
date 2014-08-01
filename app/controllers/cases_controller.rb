@@ -6,7 +6,6 @@ class CasesController < ApplicationController
       @cases = get_cases(@filter)
     rescue DeskApi::Error => e
       @errors= {e.to_s => e.backtrace.inspect}
-      # raise e
     end
   end
 
@@ -45,13 +44,15 @@ class CasesController < ApplicationController
   end
 
   def get_filter index = nil
+    filter = nil
     begin
-      get_desk.filters.entries[(index.to_i-1)]
+      filter = get_desk.filters.entries[(index.to_i-1)]
     rescue => e
-      puts index.to_s
       puts e
-      get_desk.filters.entries.first
+      filter = get_desk.filters.entries.first
     end
+    filter = get_desk.filters.entries.first if filter.nil?
+    filter
   end
 
   def get_cases filter = nil
